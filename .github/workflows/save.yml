@@ -12,7 +12,7 @@ jobs:
       CRYPTO_URL_2: ${{ secrets.CRYPTO_URL_2 }}
       CRYPTO_MONGO_CON: ${{ secrets.CRYPTO_MONGO_CON }}
       CRYPTO_MONGO_COL: ${{ secrets.CRYPTO_MONGO_COL }}
-      CRYPTO_MONGO_DB: ${{ secrets.CRYPTO_MONGO_db }}
+      CRYPTO_MONGO_DB: ${{ secrets.CRYPTO_MONGO_DB }}
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
