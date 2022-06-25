@@ -1,0 +1,28 @@
+name: Save
+
+on:
+  schedule:
+    - cron: '0,15 * * * *'  # once every 30 minutes
+
+jobs:
+  save-data:
+    runs-on: macOS-latest
+    env:
+      CRYPTO_URL_1: ${{ secrets.CRYPTO_URL_1 }}
+      CRYPTO_URL_2: ${{ secrets.CRYPTO_URL_2 }}
+      CRYPTO_MONGO_CON: ${{ secrets.CRYPTO_MONGO_CON }}
+      CRYPTO_MONGO_COL: ${{ secrets.CRYPTO_MONGO_COL }}
+      CRYPTO_MONGO_DB: ${{ secrets.CRYPTO_MONGO_db }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install rvest package
+        run: Rscript -e 'install.packages("rvest", dependencies = TRUE)'
+      - name: Install jsonlite package
+        run: Rscript -e 'install.packages("jsonlite", dependencies = TRUE)'
+      - name: Install tidyverse package
+        run: Rscript -e 'install.packages("tidyverse", dependencies = TRUE)'
+      - name: Install mongolite package
+        run: Rscript -e 'install.packages("mongolite", dependencies = TRUE)'
+      - name: Run The R Script
+        run: Rscript save.R
