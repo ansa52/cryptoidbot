@@ -26,6 +26,7 @@ data_crypto <- merge(crypto,update,by="pair")
 
 data_json <- data_crypto %>% select(pair,currencyGroup,name,logo,latestPrice,day,week,month,year)
 
+data_json[,5:9] <- lapply(data_json[,5:9], as.numeric) 
 
 #koneksi ke mongodb
 cs = Sys.getenv("CRYPTO_MONGO_CON")
