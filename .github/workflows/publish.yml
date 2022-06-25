@@ -10,14 +10,15 @@ jobs:
     env:
       CRYPTO_MONGO_CON: ${{ secrets.CRYPTO_MONGO_CON }}
       CRYPTO_MONGO_COL: ${{ secrets.CRYPTO_MONGO_COL }}
-      CRYPTO_MONGO_DB: ${{ secrets.CRYPTO_MONGO_db }}
+      CRYPTO_MONGO_DB: ${{ secrets.CRYPTO_MONGO_DB }}
+      CRYPTO_APP: ${{ secrets.CRYPTO_APP }}
       CRYPTO_CONSUMER_API_KEY: ${{ secrets.CRYPTO_CONSUMER_API_KEY }}
       CRYPTO_CONSUMER_API_SECRET: ${{ secrets.CRYPTO_CONSUMER_API_SECRET }}
       CRYPTO_ACCESS_TOKEN: ${{ secrets.CRYPTO_ACCESS_TOKEN }}
       CRYPTO_ACCESS_TOKEN_SECRET: ${{ secrets.CRYPTO_ACCESS_TOKEN_SECRET }}
     steps:
       - uses: actions/checkout@v2
-     - name: Install rtweet package
+      - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
       - name: Install tidyverse package
         run: Rscript -e 'install.packages("tidyverse", dependencies = TRUE)'
@@ -27,4 +28,5 @@ jobs:
         run: Rscript -e 'install.packages("gt", dependencies = TRUE)'
       - name: Install webshot package
         run: Rscript -e 'install.packages("webshot", dependencies = TRUE)'
+        
         run: Rscript publish.R
