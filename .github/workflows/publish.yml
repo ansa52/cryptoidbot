@@ -26,7 +26,9 @@ jobs:
         run: Rscript -e 'install.packages("mongolite", dependencies = TRUE)'
       - name: Install gt package
         run: Rscript -e 'install.packages("gt", dependencies = TRUE)'
-      - name: Install webshot package
-        run: Rscript -e 'install.packages("webshot", dependencies = TRUE)'
-        
+      - name: Install gtExtras package
+        run: Rscript -e 'install.packages("gtExtras", dependencies = TRUE)'
+      - name: Install webshot2 package
+        run: Rscript -e 'install.packages("webshot2", dependencies = TRUE)'
+      - name: Running rscript
         run: Rscript publish.R
