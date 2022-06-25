@@ -35,6 +35,5 @@ harga_crypto_collection = mongo(collection=Sys.getenv("CRYPTO_MONGO_COL"), db=Sy
 #insert data_json
 if(harga_crypto_collection$count() > 0){
   harga_crypto_collection$remove('{}')
-} else {
-  harga_crypto_collection$insert(data_json)
 }
+harga_crypto_collection$insert(data_json)
