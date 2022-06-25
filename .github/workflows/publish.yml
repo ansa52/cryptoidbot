@@ -2,7 +2,7 @@ name: Publish
 
 on:
   schedule:
-    - cron: '15,45 * * * *'  # twice every hour.
+    - cron: '25,50 * * * *'  # twice every hour.
 
 jobs:
   publish-data:
