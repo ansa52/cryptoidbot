@@ -28,7 +28,7 @@ tabel <- high %>%
 
 ## Create Twitter token
 crypto_token <- rtweet::create_token(
-  app = "cryptoidbot",
+  app = Sys.getenv("CRYPTO_APP"), 
   consumer_key =    Sys.getenv("CRYPTO_TWITTER_CONSUMER_API_KEY"),
   consumer_secret = Sys.getenv("CRYPTO_TWITTER_CONSUMER_API_SECRET"),
   access_token =    Sys.getenv("CRYPTO_TWITTER_ACCESS_TOKEN"),
