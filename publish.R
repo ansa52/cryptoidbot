@@ -30,7 +30,7 @@ high_price <- crypto[order(crypto$Harga, decreasing = TRUE),]
 high <- high_price[1:5,3:9]
 
 # 5 crypto dengan harga terendah
-low_price <- crypto[order(crypto$HargatPrice, decreasing = FALSE),]
+low_price <- crypto[order(crypto$Harga, decreasing = FALSE),]
 low <- low_price[1:5,3:9]
 
 
