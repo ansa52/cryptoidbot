@@ -54,7 +54,7 @@ tmp <- tempfile(fileext = '.png') #path to temp .png file
 gtsave_extra(tabel,tmp) #save gt table as png
 
 tmp2 <- tempfile(fileext = '.png') #path to temp .png file
-gtsave_extra(tabel,tmp2) #save gt table as png
+gtsave_extra(tabel2,tmp2) #save gt table as png
 
 
 ## Create Twitter token
@@ -67,7 +67,7 @@ crypto_token <- rtweet::create_token(
 )
 
 status_details <- paste0(
-  "Update Harga Crypto", data$name, "\n\n"
+  "Update Harga Crypto\n\n"
 )
 
 ## Post the image to Twitter
@@ -82,4 +82,3 @@ rtweet::post_tweet(
   media = tmp2,
   token = crypto_token
 )
-
