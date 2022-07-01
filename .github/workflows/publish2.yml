@@ -1,0 +1,36 @@
+name: Publish2
+
+on:
+  schedule:
+    - cron: '30 * * * *'  # twice every hour.
+
+jobs:
+  publish-data:
+    runs-on: macOS-latest
+    env:
+      CRYPTO_TWITTER_ACCESS_TOKEN: ${{ secrets.CRYPTO_TWITTER_ACCESS_TOKEN }}
+      CRYPTO_TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.CRYPTO_TWITTER_ACCESS_TOKEN_SECRET }}
+      CRYPTO_TWITTER_CONSUMER_API_KEY: ${{ secrets.CRYPTO_TWITTER_CONSUMER_API_KEY }}
+      CRYPTO_TWITTER_CONSUMER_API_SECRET: ${{ secrets.CRYPTO_TWITTER_CONSUMER_API_SECRET }}
+      CRYPTO_MONGO_CON: ${{ secrets.CRYPTO_MONGO_CON }}
+      CRYPTO_MONGO_COL: ${{ secrets.CRYPTO_MONGO_COL }}
+      CRYPTO_MONGO_DB: ${{ secrets.CRYPTO_MONGO_DB }}
+      CRYPTO_APP: ${{ secrets.CRYPTO_APP }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install tidyverse package
+        run: Rscript -e 'install.packages("tidyverse", dependencies = TRUE)'
+      - name: Install mongolite package
+        run: Rscript -e 'install.packages("mongolite", dependencies = TRUE)'
+      - name: Install gt package
+        run: Rscript -e 'install.packages("gt", dependencies = TRUE)'
+      - name: Install gtExtras package
+        run: Rscript -e 'install.packages("gtExtras", dependencies = TRUE)'
+      - name: Install webshot2 package
+        run: Rscript -e 'install.packages("webshot2", dependencies = TRUE)'
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Running rscript
+        run: Rscript publish2.R
